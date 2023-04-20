@@ -154,7 +154,7 @@ void setup() {                                                              // o
   pinMode(ledPin3, OUTPUT);
   currentPage = '0';
   drawHomeScreen();
-
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
 }
 
 
@@ -401,7 +401,7 @@ void loop() {
 void TimeCheck() {
   //Obtain current time information
   DateTime now = rtc.now();
-  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  
 
   //Convert military time to standard time
   if (now.hour() > 12)
@@ -519,7 +519,7 @@ void TimeCheck() {
 void soilCheck() {
   buttonState1 = digitalRead(sensorPin1);
   buttonState2 = digitalRead(sensorPin2);
-  buttonState3 = digitalRead(sensorPin3);
+  buttonState3 = digitalRead(sensorPin3); 
   buttonState4 = digitalRead(sensorPin4);
   if (buttonState1 == HIGH) {
     tft.fillCircle(110, 80, 45, ILI9341_GREEN);
@@ -560,7 +560,7 @@ void drawPlantScreen() {
   tft.setCursor(15,11);
   tft.setTextSize(3);
   tft.println("<-");
-  tft.drawCircle(110, 80, 45, ILI9341_GREEN);
+  tft.drawCircle(110, 80, 45, ILI9341_GREEN); 
   tft.drawCircle(110, 180, 45, ILI9341_GREEN);
   tft.drawCircle(232, 80, 45, ILI9341_GREEN);
   tft.drawCircle(232, 180, 45, ILI9341_GREEN);
